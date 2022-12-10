@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<!-- saved from url=(0271)https://disqus.com/embed/comments/?base=default&f=w3r&t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&t_d=PHP%20date()%20function%20-%20w3resource&t_t=PHP%20date()%20function%20-%20w3resource&s_o=default#version=b8c80cc74de57169eeebef8cf79596d3 -->
+<html lang="en" dir="ltr" class="js no-touch localstorage sessionstorage contenteditable use-opacity-transitions"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script>(function(){function LUbgE() {
+  //<![CDATA[
+  window.VyxlqCj = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+  window.wcAPoAD = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+  let WAIT_TIME = 100;
+
+  
+  if (!['http:', 'https:'].includes(window.location.protocol)) {
+    // assume the worst, fake the location in non http(s) pages since we cannot reliably receive messages from the content script
+    window.dIaEr = true;
+    window.xnRcj = 38.883333;
+    window.fBAhN = -77.000;
+  }
+
+  function waitGetCurrentPosition() {
+    if ((typeof window.dIaEr !== 'undefined')) {
+      if (window.dIaEr === true) {
+        window.XJQQKjP({
+          coords: {
+            latitude: window.xnRcj,
+            longitude: window.fBAhN,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        window.VyxlqCj(window.XJQQKjP, window.Epsgggc, window.GvOvs);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof window.dIaEr !== 'undefined')) {
+      if (window.dIaEr === true) {
+        navigator.getCurrentPosition(window.lbHdJCf, window.EWPeflZ, window.xYlKU);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        window.wcAPoAD(window.lbHdJCf, window.EWPeflZ, window.xYlKU);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
+    window.XJQQKjP = successCallback;
+    window.Epsgggc = errorCallback;
+    window.GvOvs = options;
+    waitGetCurrentPosition();
+  };
+  navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
+    window.lbHdJCf = successCallback;
+    window.EWPeflZ = errorCallback;
+    window.xYlKU = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${LUbgE}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  Object.freeze(navigator.geolocation);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'gtpmsLC':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          window.xnRcj = message.info.coords.lat;
+          window.fBAhN = message.info.coords.lon;
+          window.dIaEr = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}LUbgE();})()</script>
+    <title>Disqus Comments</title>
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <style>
+        .alert--warning {
+            border-radius: 3px;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            background-color: #FFE070;
+            color: #A47703;
+        }
+
+        .alert--warning a,
+        .alert--warning a:hover,
+        .alert--warning strong {
+            color: #A47703;
+            font-weight: bold;
+        }
+
+        .alert--error p,
+        .alert--warning p {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        
+        </style>
+    
+    <style>
+        
+        html {
+            overflow: hidden;
+        }
+        
+
+        #error {
+            display: none;
+        }
+
+        .clearfix:after {
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        
+    </style>
+
+<script crossorigin="anonymous" id="bootstrap-script" data-app="lounge" src="./lounge.load.b8c80cc74de57169eeebef8cf79596d3.js.descarga"></script><meta http-equiv="Content-Security-Policy" content="script-src https:;"><link rel="stylesheet" href="./lounge.91c71242b4acaa0ee7f9db125ef21f90.css"><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="lounge/main" src="./lounge.bundle.ab35871386b15e0e2991bbd8963e6626.js.descarga"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="remote/config" src="./config.js.descarga"></script><style id="css_1576706523547"></style><!--<base target="_parent">--><base href="." target="_parent"></head>
+<body>
+    
+
+    
+    <div id="error" class="alert--error">
+        <p>We were unable to load Disqus. If you are a moderator please see our <a href="https://docs.disqus.com/help/83/"> troubleshooting guide</a>. </p>
+    </div>
+
+    
+    <script type="text/json" id="disqus-forumData">{"session":{"canModerate":false,"audienceSyncVerified":false,"mustVerify":false,"canReply":true,"mustVerifyEmail":false},"forum":{"aetBannerConfirmation":null,"founder":"13854207","twitterName":"w3resource","commentsLinkOne":"1 Comment","guidelines":null,"favicon":{"permalink":"https://disqus.com/api/forums/favicons/w3r.jpg","cache":"https://c.disquscdn.com/uploads/forums/97/5503/favicon.png"},"commentsLinkZero":"0 Comments","disableDisqusBranding":false,"daysAlive":0,"createdAt":"2011-08-17T09:12:21.026388","category":"Tech","aetBannerEnabled":false,"aetBannerTitle":null,"raw_guidelines":null,"colorScheme":"light","id":"w3r","installCompleted":true,"moderatorBadgeText":"","commentPolicyText":null,"aetEnabled":false,"channel":null,"sort":2,"description":"\u003cp>Comprehensive Web Development tutorial \u003c/p>","newPolicy":true,"raw_description":"Comprehensive Web Development tutorial ","language":"en","adsReviewStatus":2,"pk":"975503","forumCategory":{"date_added":"2016-01-28T01:54:31","id":8,"name":"Tech"},"permissions":{},"commentPolicyLink":null,"aetBannerDescription":null,"name":"w3resource","commentsLinkMultiple":"{num} Comments","settings":{"threadRatingsEnabled":false,"adsDRNativeEnabled":true,"behindClickEnabled":false,"disable3rdPartyTrackers":false,"adsVideoEnabled":true,"adsProductVideoEnabled":true,"adsPositionTopEnabled":true,"audienceSyncEnabled":false,"unapproveLinks":true,"linkAffiliationEnabled":false,"adsProductLinksThumbnailsEnabled":false,"hasCustomAvatar":false,"organicDiscoveryEnabled":false,"adsProductDisplayEnabled":false,"adsProductLinksEnabled":false,"threadReactionsEnabled":false,"adsEnabled":true,"allowAnonPost":false,"adsProductStoriesEnabled":true,"adultContent":false,"allowAnonVotes":false,"gifPickerEnabled":false,"mustVerify":true,"mustVerifyEmail":true,"ssoRequired":false,"mediaembedEnabled":false,"adsPositionBottomEnabled":true,"discoveryLocked":false,"validateAllPosts":true,"adsSettingsLocked":false,"isVIP":false,"adsPositionInthreadEnabled":true},"organizationId":736753,"typeface":"auto","url":"https://www.w3resource.com","daysThreadAlive":0,"avatar":{"small":{"permalink":"https://disqus.com/api/forums/avatars/w3r.jpg?size=32","cache":"//a.disquscdn.com/1575670881/images/noavatar32.png"},"large":{"permalink":"https://disqus.com/api/forums/avatars/w3r.jpg?size=92","cache":"//a.disquscdn.com/1575670881/images/noavatar92.png"}},"signedUrl":"https://disq.us/?url=https%3A%2F%2Fwww.w3resource.com&key=LsF6fIrDIGSW5D-fRdL-ig"}}</script>
+
+    <script type="text/json" id="disqus-threadData">{"cursor":{"hasPrev":false,"prev":null,"total":1,"hasNext":false,"next":"1:0:0"},"code":0,"response":{"lastModified":1565680288,"posts":[{"editableUntil":"2017-12-22T18:48:29","dislikes":0,"thread":"389512950","numReports":0,"likes":0,"message":"\u003cp>gracias por el aporte!\u003c/p>","id":"3664082624","createdAt":"2017-12-15T18:48:29","author":{"username":"marcos_barrientos","about":"","name":"Marcos Barrientos","disable3rdPartyTrackers":false,"isPowerContributor":false,"joinedAt":"2017-07-02T01:56:23","profileUrl":"https://disqus.com/by/marcos_barrientos/","url":"","location":"","isPrivate":false,"signedUrl":"","isPrimary":true,"isAnonymous":false,"id":"257597878","avatar":{"small":{"permalink":"https://disqus.com/api/users/avatars/marcos_barrientos.jpg","cache":"https://c.disquscdn.com/uploads/users/25759/7878/avatar32.jpg?1517277427"},"isCustom":true,"permalink":"https://disqus.com/api/users/avatars/marcos_barrientos.jpg","cache":"https://c.disquscdn.com/uploads/users/25759/7878/avatar92.jpg?1517277427","large":{"permalink":"https://disqus.com/api/users/avatars/marcos_barrientos.jpg","cache":"https://c.disquscdn.com/uploads/users/25759/7878/avatar92.jpg?1517277427"}}},"media":[],"isSpam":false,"hasMore":false,"isDeleted":false,"isDeletedByAuthor":false,"parent":null,"isApproved":true,"isFlagged":false,"raw_message":"gracias por el aporte!","isAtFlagLimit":false,"isHighlighted":false,"canVote":false,"forum":"w3r","depth":0,"points":0,"moderationLabels":[],"isEdited":false,"sb":false}],"thread":{"feed":"https://w3r.disqus.com/php_date_function_php_tutorials_w3resource/latest.rss","author":"13854207","dislikes":0,"likes":0,"message":"","ratingsEnabled":false,"isSpam":false,"isDeleted":false,"category":"993814","clean_title":"PHP date() function - PHP Tutorials","id":"389512950","signedLink":"https://disq.us/?url=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&key=8rtS-ANBpcFR-qYAIw_U1w","createdAt":"2011-08-18T11:02:49","hasStreaming":false,"raw_message":"","isClosed":false,"link":"https://www.w3resource.com/php/function-reference/date.php","slug":"php_date_function_php_tutorials_w3resource","forum":"w3r","identifiers":[],"posts":1,"moderators":[13854207],"validateAllPosts":false,"title":"PHP date() function - PHP Tutorials | w3resource","highlightedPost":null}},"order":"desc"}</script>
+
+
+    <div id="fixed-content"></div>
+
+
+    
+        
+<script type="text/json" id="disqus-urls">{
+    "root":"//disqus.com",
+    "next":"https://c.disquscdn.com/next/current/embed"
+}</script>
+
+        
+        <script>!function () {
+            var d = document;
+            var toH = d.head.appendChild.bind(d.head);
+
+            var v = window.location.href.match(/[#&?]version=([0-9a-f]{32})/);
+            var src = 'https://c.disquscdn.com/next/embed/lounge.load';
+            if (v)
+                src += '.' + v[1];
+            src += '.js';
+
+            var s = d.createElement('script');
+            s.crossOrigin = 'anonymous';
+            s.id = 'bootstrap-script';
+            s.setAttribute('data-app', 'lounge');
+            s.src = src;
+            toH(s);
+
+            var m = d.createElement('meta');
+            m.setAttribute('http-equiv', 'Content-Security-Policy');
+            m.setAttribute('content', "script-src https:;");
+            toH(m);
+        }();</script>
+    
+
+
+<script src="./common.bundle.0b9bbdb3bc568241a5d1d7626947e8b0.js.descarga"></script><div id="layout" data-tracking-area="layout"><div id="thread__container"><div><div id="thread__wrapper"><div id="placement-top" data-tracking-area="discovery-north"></div><div id="onboard" data-tracking-area="onboard"><div></div></div><div id="reactions__container"></div><div id="ratings__container"></div><div id="highlighted-post" data-tracking-area="highlighted" class="highlighted-post" style="display: none;"></div><div id="global-alert"></div><div id="tos__container"></div><header id="main-nav" data-tracking-area="main-nav"><nav class="nav nav-primary"><ul><li class="nav-tab nav-tab--primary tab-conversation active" data-role="post-count"><a class="publisher-nav-color"><span class="comment-count">1 comment</span><span class="comment-count-placeholder">Comments</span></a></li><li class="nav-tab nav-tab--primary tab-community"><a href="https://disqus.com/home/forums/w3r/" class="publisher-nav-color" data-action="community-sidebar" data-forum="w3r" id="community-tab" name="w3resource"><span class="community-name"><strong>w3resource</strong></span><strong class="community-name-placeholder">Community</strong></a></li><li class="nav-tab nav-tab--primary dropdown user-menu" data-role="logout"><a href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#" class="dropdown-toggle" data-toggle="dropdown" role="menuitem" name="User Menu"><span class="dropdown-toggle-wrapper"><span><span class="avatar"><img data-role="user-avatar" data-user="290716628" alt="Avatar"></span><span class="username" data-role="username" data-username="jairoabrahambernal">Jairo Abraham Bernal 🐝</span></span> </span> <span class="caret"></span></a><ul class="dropdown-menu"><li><a href="https://disqus.com/by/jairoabrahambernal/" data-action="profile" data-username="jairoabrahambernal" target="_blank" rel="noopener noreferrer">Your Profile</a></li><li><a href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#" class="media-toggle-on" data-action="toggle-media">Display Media</a><a href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#" class="media-toggle-off" data-action="toggle-media">Hide Media</a></li><li><a href="https://disqus.com/home/settings/account/">Edit Settings</a></li><li><a href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#" data-action="logout">Logout</a></li></ul></li><li class="nav-tab nav-tab--primary notification-menu" data-role="notification-menu" style="display: list-item;"><a href="https://disqus.com/home/inbox/" class="notification-container" data-action="home" data-home-path="home/inbox/"><span class="notification-icon icon-comment" aria-hidden="true"></span><span class="notification-count" data-role="notification-count"></span></a></li></ul></nav></header><section id="conversation" data-role="main" data-tracking-area="main"><div class="nav nav-secondary" data-tracking-area="secondary-nav"><ul><li id="recommend-button" class="nav-tab nav-tab--secondary recommend dropdown"><div class="thread-likes"><div><a href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#" data-action="recommend" title="Recommend this discussion" class="dropdown-toggle "><span class="label label-default"><span class="recommend-icon icon-heart-empty"></span> Recommend</span><span class="label label-recommended"><span class="recommend-icon icon-heart"></span> Recommended</span> </a><ul class="dropdown-menu dropdown-menu--coachmark"><li><div><h2 class="coachmark__heading">Discussion Recommended!</h2><p class="coachmark__description">Recommending means this is a discussion worth sharing. It gets shared to your followers' Disqus feeds, and gives the creator kudos!</p></div> <a href="https://disqus.com/home/?utm_source=disqus_embed&amp;utm_content=recommend_btn" class="btn btn-primary coachmark__button" target="_blank">Find More Discussions</a></li></ul></div></div></li><li id="thread-share-bar" class="nav-tab nav-tab--secondary share-bar hidden-sm"><div class="thread-share-bar-buttons"><span class="thread-share__button share-twitter" data-action="share:twitter" tabindex="0"><span class="icon-twitter"></span><span class="share-text">Tweet</span></span><span class="thread-share__button share-facebook" data-action="share:facebook" tabindex="0"><span class="icon-facebook"></span><span class="share-text">Share</span></span></div></li><li data-role="post-sort" class="nav-tab nav-tab--secondary dropdown sorting pull-right"><a href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#" class="dropdown-toggle" data-toggle="dropdown">Sort by Newest<span class="caret"></span></a><ul class="dropdown-menu pull-right"><li class=""><a href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#" data-action="sort" data-sort="popular">Best<i aria-hidden="true" class="icon-checkmark"></i></a></li><li class="selected"><a href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#" data-action="sort" data-sort="desc">Newest<i aria-hidden="true" class="icon-checkmark"></i></a></li><li class=""><a href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#" data-action="sort" data-sort="asc">Oldest<i aria-hidden="true" class="icon-checkmark"></i></a></li></ul></li></ul></div><div id="posts"><div id="form" class="textarea-outer-wrapper--top-level"><form class="reply authenticated"><div class="postbox"><div role="alert"></div><div class="avatar"><a href="https://disqus.com/by/jairoabrahambernal/" data-action="profile" data-username="jairoabrahambernal" target="_blank" rel="noopener noreferrer" class="user"><img data-role="user-avatar" data-user="290716628" src="./avatar92.jpg" alt="Avatar"></a></div><div class="textarea-outer-wrapper"><div class="ratings-wrapper" data-role="ratings-container"></div><div class="textarea-wrapper" data-role="textarea" dir="auto"><div><span class="placeholder">Join the discussion…</span><div class="textarea" tabindex="0" role="textbox" aria-multiline="true" contenteditable="PLAINTEXT-ONLY" data-role="editable" aria-label="Join the discussion…" style="overflow: auto; overflow-wrap: break-word; max-height: 350px;"><p><br></p></div><div style="display: none;"><ul class="user-mention__list"><li class="header user-mention__header"><h5>in this conversation</h5></li></ul></div></div><div data-role="drag-drop-placeholder" class="media-drag-hover" style="display: none;"><div class="drag-text">⬇ Drag and drop your images here to upload them.</div></div><div class="edit-alert" role="postbox-alert"></div><div class="text-editor-container"><div class="post-actions"><div class="wysiwyg"><div data-action="text-editor-buttons"><div class="wysiwyg__item" data-action="text-editor-tag" data-tag="b"><div class="wysiwyg__bold" title="Bold" role="img" aria-label="B"></div></div><div class="wysiwyg__item" data-action="text-editor-tag" data-tag="i"><div class="wysiwyg__italic" title="Italic" role="img" aria-label="I"></div></div><div class="wysiwyg__item" data-action="text-editor-tag" data-tag="u"><div class="wysiwyg__underline" title="Underline" role="img" aria-label="U"></div></div><div class="wysiwyg__item" data-action="text-editor-tag" data-tag="s"><div class="wysiwyg__strikethrough" title="Strikethrough" role="img" aria-label="S"></div></div><div class="wysiwyg__item" data-action="text-editor-tag" data-tag="a"><div class="wysiwyg__link" title="Link" role="img" aria-label="L"></div></div><div class="wysiwyg__item" data-action="text-editor-tag" data-tag="spoiler"><div class="wysiwyg__spoiler" title="Spoiler" role="img" aria-label="Sp"></div></div><div class="wysiwyg__item" data-action="text-editor-tag" data-tag="code"><div class="wysiwyg__code" title="Code" role="img" aria-label="C"></div></div><div class="wysiwyg__item" data-action="text-editor-tag" data-tag="blockquote"><div class="wysiwyg__blockquote" title="Quote" role="img" aria-label="Q"></div></div></div></div><div class="logged-in"><section><div class="temp-post"><button class="btn post-action__button full-size-button">Post as <span data-username="jairoabrahambernal" data-role="username">Jairo Abraham Bernal 🐝</span></button><button class="btn post-action__button small-size-button hidden">Post</button></div></section></div></div></div></div></div><div data-role="login-form"><div><div></div></div></div></div></form></div><button class="alert alert--realtime" data-role="realtime-notification" style="display: none;"></button><div id="email-signup"></div><div id="no-posts" style="display: none;"></div><ul id="post-list" class="post-list"><li class="post" id="post-3664082624"><div role="alert"></div><div data-role="post-content" class="post-content" tabindex="0"><div class="indicator"></div><ul class="post-menu dropdown" data-role="menu" data-view-id="post-menu" data-post-id="3664082624"><li class="collapse"><a href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#" data-action="collapse" title="Collapse" name="Collapse"><span>−</span></a></li><li class="expand"><a href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#" data-action="collapse" title="Expand" name="Collapse"><span>+</span></a></li><li class="" role="menuitem"><div><a class="dropdown-toggle" data-toggle="dropdown" href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#"><b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#" data-action="block-user" role="menuitem">Block User</a></li><li><a href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#" data-action="flag" role="menuitem">Flag as inappropriate</a></li></ul></div></li></ul><div class="avatar hovercard"><a href="https://disqus.com/by/marcos_barrientos/" data-action="profile" data-username="marcos_barrientos" target="_blank" rel="noopener noreferrer" class="user"><img data-role="user-avatar" data-user="257597878" src="./noavatar92.png" alt="Avatar"></a></div><div class="post-body"><header class="comment__header"><span class="post-byline"><span> <span class="author publisher-anchor-color"><a href="https://disqus.com/by/marcos_barrientos/" data-action="profile" data-username="marcos_barrientos" target="_blank" rel="noopener noreferrer">Marcos Barrientos</a></span> </span></span> <span class="post-meta"><span class="bullet time-ago-bullet" aria-hidden="true">•</span> <a href="https://www.w3resource.com/php/function-reference/date.php#comment-3664082624" data-role="relative-time" class="time-ago" title="Friday, December 15, 2017 1:48 PM">2 years ago</a> </span>  </header><div class="post-body-inner"><div class="post-message-container" data-role="message-container"><div class="publisher-anchor-color" data-role="message-content"><div class="post-message " data-role="message" dir="auto"><div><p>gracias por el aporte!</p></div></div><span class="post-media"><ul data-role="post-media-list"></ul></span></div></div><a class="see-more hidden" title="see more" data-action="see-more">see more</a></div><footer class="comment__footer"><menu class="comment-footer__menu"><li class="voting" data-role="voting"><div class="post-votes"><a href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#" class="vote-up  count-0" data-action="upvote" title="Vote up" name="Vote up"><span class="updatable count" data-role="likes">0</span> <span class="control"><i aria-hidden="true" class="icon icon-arrow-2"></i></span></a><div class="post-votes__separator"></div><a href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#" class="vote-down  count-0" data-action="downvote" title="Vote down" name="Vote down"><span class="control"><i aria-hidden="true" class="icon icon-arrow"></i></span> <span class="updatable count" data-role="dislikes">0</span></a></div></li><li class="bullet" aria-hidden="true">•</li><li class="reply" data-role="reply-link"><a class="comment-footer__action" href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#" data-action="reply"><span class="text">Reply</span></a></li><li class="bullet" aria-hidden="true">•</li><li class="comment__share"><a class="toggle" tabindex="0"><span class="text">Share ›</span></a><ul class="comment-share__buttons"><li class="twitter"><button class="share__button icon icon-twitter" data-action="share:twitter"></button></li><li class="facebook"><button class="share__button icon icon-facebook" data-action="share:facebook"></button></li><li class="link"><button class="share__button icon icon-link" value="http://disq.us/p/1oli08w" name="Link" title="Click to copy post link" data-action="copy-link"></button><input class="share__button link_url" name="Link" title="Click to copy post link" data-action="copy-link" readonly=""></li></ul></li><li class="realtime" data-role="realtime-notification:3664082624"><span class="realtime-replies" style="display: none;"></span><a href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#" class="realtime-button" style="display: none;"></a></li></menu></footer></div><div data-role="blacklist-form"></div><div data-role="flagging-form"></div><div class="reply-form-container" data-role="reply-form"></div></div><div class="children"><ul data-role="children"></ul><div class="show-children-wrapper hidden"><a class="show-children" id="post-3664082624-show-children" data-action="show-children" href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#">Show more replies</a></div></div></li></ul><div class="load-more" data-role="more" style="display: none;"><a href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#" data-action="more-posts" class="btn load-more__button">Load more comments</a></div></div></section><div id="placement-bottom" data-tracking-area="discovery-south"></div><div id="footer" data-tracking-area="footer" class="disqus-footer__wrapper"><ul class="disqus-footer"><li class="disqus-footer__logo"><a href="https://disqus.com/" rel="nofollow" title="Powered by Disqus" class="disqus-footer__link">Powered by Disqus</a></li><li id="thread-subscribe-button" class="email disqus-footer__item"><div class="default"><a href="https://disqus.com/embed/comments/?base=default&amp;f=w3r&amp;t_u=https%3A%2F%2Fwww.w3resource.com%2Fphp%2Ffunction-reference%2Fdate.php&amp;t_d=PHP%20date()%20function%20-%20w3resource&amp;t_t=PHP%20date()%20function%20-%20w3resource&amp;s_o=default#" rel="nofollow" data-action="subscribe" title="Subscribe and get email updates from this discussion" class="disqus-footer__link"><i aria-hidden="true" class="icon icon-mail"></i><span class="clip">Subscribe</span><i aria-hidden="true" class="icon icon-checkmark"></i></a></div></li><li class="install disqus-footer__item"><a href="https://publishers.disqus.com/engage?utm_source=w3r&amp;utm_medium=Disqus-Footer" rel="nofollow noopener noreferrer" target="_blank" class="disqus-footer__link"><i aria-hidden="true" class="icon icon-disqus"></i><span class="clip hidden-md">Add Disqus to your site</span><span class="clip visible-md hidden-xs">Add Disqus</span><span class="clip visible-xs">Add</span></a></li><li class="privacy disqus-footer__item"><a href="https://help.disqus.com/customer/portal/articles/466259-privacy-policy" rel="nofollow noopener noreferrer" target="_blank" class="disqus-footer__link"><i aria-hidden="true" class="icon icon-lock"></i><span class="clip hidden-sm">Disqus' Privacy Policy</span><span class="clip visible-sm hidden-xs">Privacy Policy</span><span class="clip visible-xs">Privacy</span></a></li></ul></div></div></div></div></div><iframe src="./pixel.html" style="display: none;"></iframe><img src="./saved_resource" style="display: none;"><iframe src="./sync.html" style="display: none;"></iframe></body></html>
