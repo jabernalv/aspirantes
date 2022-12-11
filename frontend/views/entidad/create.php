@@ -1,6 +1,6 @@
 <?php
 
-use yii\bootstrap4\Html;
+use yii\bootstrap5\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Entidad */

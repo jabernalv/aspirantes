@@ -26,14 +26,6 @@ return [
         ],
     ],
     'modules' => [
-        'pdfjs' => [
-            'class' => '\yii2assets\pdfjs\Module',
-            'waterMark' => [
-                'text' => 'Documento confidencial',
-                'color' => 'red',
-                'alpha' => '0.3',
-            ]
-        ],
         'gridview' => [
             'class' => '\kartik\grid\Module'
 // enter optional module parameters below - only if you need to  

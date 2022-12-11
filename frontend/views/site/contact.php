@@ -1,9 +1,9 @@
 <?php
 /* @var $this yii\web\View */
-/* @var $form yii\bootstrap4\ActiveForm */
+/* @var $form yii\bootstrap5\ActiveForm */
 /* @var $model \frontend\models\ContactForm */
 
-use yii\bootstrap4\Html;
+use yii\bootstrap5\Html;
 use kartik\form\ActiveForm;
 
 $this->title = 'Contactenos';
@@ -36,7 +36,7 @@ $this->registerCssFile('/css/contact-form.css?' . time());
         </div>
         <div class="col-lg-6">
             <?=
-                    $form->field($model, 'email', ['addon' => ['prepend' => ['content' => '<i class="fa fa-envelope"></i>']]])
+                    $form->field($model, 'email', ['addon' => ['prepend' => ['content' => '<i class="bi bi-envelope-at"></i>']]])
                     ->textInput([
                         'placeholder' => 'Correo electrónico',
                         'class' => 'form-control triminput correo',
@@ -86,7 +86,7 @@ $this->registerCssFile('/css/contact-form.css?' . time());
             </div>
         <?php endif; ?>
         <div class="form-group col-lg-6">
-            <?= Html::submitButton('<i class="fa fa-envelope"></i> Enviar', ['class' => 'btn btn-custom', 'name' => 'contact-button', 'id' => 'contact-button']) ?>
+            <?= Html::submitButton('<i class="bi bi-envelope-at"></i> Enviar', ['class' => 'btn btn-custom', 'name' => 'contact-button', 'id' => 'contact-button']) ?>
             &nbsp;
             <?= Html::button('<i class="fa fa-eraser"></i> Borrar', ['class' => 'btn btn-warning', 'name' => 'reset-button', 'type' => 'reset', 'id' => 'reset-button', 'onclick' => 'return confirm("¿Seguro que desea borrar el formulario?");']) ?>
         </div>

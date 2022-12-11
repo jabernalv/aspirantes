@@ -7,29 +7,31 @@
  */
 
 namespace frontend\assets;
+
 use yii\web\AssetBundle;
+
 //use kartik\base\AssetBundle;
 
 
 class CreativeAsset extends AssetBundle {
-    
-    
+
+
     function __construct($config = []) {
         parent::__construct($config);
-        $this->js[] = 'js/creative.min.js?' . time();
-        $this->css[] = 'vendor/fontawesome-free/css/fontawesome.min.css';
-        $this->css[] = '//fonts.googleapis.com/css?family=Helvetica:400,700,400italic,700italic';
-        $this->css[] = '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800';
-        $this->css[] = 'css/creative.min.css?' . time();
     }
 
     public $sourcePath = __DIR__ . '/../../common/themes/creative';
     public $css = [
+        //'vendor/fontawesome-free/css/fontawesome.min.css',
+        //'//fonts.googleapis.com/css?family=Helvetica:400,700,400italic,700italic',
+        //'//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800',
+        'css/creative.min.css?',
     ];
     public $js = [
+        'js/creative.min.js',
     ];
     public $depends = [
-        'frontend\assets\AppAsset',
+        \frontend\assets\AppAsset::class,
     ];
 
 }

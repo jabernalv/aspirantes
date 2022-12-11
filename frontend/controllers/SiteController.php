@@ -59,6 +59,7 @@ class SiteController extends Controller {
                 'actions' => [
                     'logout' => ['post'],
                     'foto' => ['post'],
+                    'validatesignup' => ['post'],
                 ],
             ],
         ];
@@ -76,7 +77,7 @@ class SiteController extends Controller {
         return [
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
-            //'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+                //'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
             'error' => [
                 'class' => 'yii\web\ErrorAction',
@@ -87,7 +88,7 @@ class SiteController extends Controller {
     private function foto($ruta, $imagenbase64) {
         date_default_timezone_set('America/Bogota');
         if (strlen($imagenbase64) <= 0) {
-            return['resultado' => false, 'message' => "No se recibió ninguna imagen"];
+            return ['resultado' => false, 'message' => "No se recibió ninguna imagen"];
         }
         //La imagen traerá al inicio data:image/png;base64, cosa que debemos remover
         $imagenCodificadaLimpia = str_replace("data:image/png;base64,", "", $imagenbase64);
@@ -98,8 +99,8 @@ class SiteController extends Controller {
         // DIRECTORY_SEPARATOR . "foto_" . uniqid() . ".png";
         //Escribir el archivo
         file_put_contents(Yii::$app->basePath .
-                DIRECTORY_SEPARATOR .
-                'web' . $ruta, $imagenDecodificada);
+            DIRECTORY_SEPARATOR .
+            'web' . $ruta, $imagenDecodificada);
         //Terminar y regresar el nombre de la foto
         return ['resultado' => true, 'message' => $ruta];
     }
@@ -136,7 +137,7 @@ class SiteController extends Controller {
             $model->password = '';
 
             return $this->render('login', [
-                        'model' => $model,
+                'model' => $model,
             ]);
         }
     }
@@ -204,7 +205,7 @@ class SiteController extends Controller {
             }
         }
         return $this->render('contact', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
@@ -218,8 +219,8 @@ class SiteController extends Controller {
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->query->andWhere(['proceso.activo' => 1]);
         return $this->render('procesos', [
-                    'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -243,6 +244,14 @@ class SiteController extends Controller {
         ]);
     }
 
+    public function actionValidatesignup(){
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post()) && Yii::$app->session->has('nuevoaspiranteuuid')) {
+            \Yii::$app->response->format = Response::FORMAT_JSON;
+            return \kartik\form\ActiveForm::validate($model);
+        }
+    }
+
     /**
      * Signs user up.
      *
@@ -254,10 +263,6 @@ class SiteController extends Controller {
             return $this->goHome();
         }
         $model = new SignupForm();
-        if (\Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && Yii::$app->session->has('nuevoaspiranteuuid')) {
-            \Yii::$app->response->format = Response::FORMAT_JSON;
-            return \kartik\form\ActiveForm::validate($model);
-        }
         if ($model->load(Yii::$app->request->post()) && Yii::$app->session->has('nuevoaspiranteuuid')) {
             $priv_key = "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";
             $model->nombres = strtoupper($model->nombres);
@@ -271,11 +276,11 @@ class SiteController extends Controller {
                     fclose($handle);
                     if (!(stristr($contents, "/Encrypt"))) { // Si el archivo no está cifrado
                         $token = Token::findOne([
-                                    'celular' => $model->celular,
-                                    'correo_electronico' => $model->correo_electronico,
-                                    'identificacion' => $model->identificacion,
-                                    'token' => $model->token,
-                                    'validado' => 0,
+                            'celular' => $model->celular,
+                            'correo_electronico' => $model->correo_electronico,
+                            'identificacion' => $model->identificacion,
+                            'token' => $model->token,
+                            'validado' => 0,
                         ]);
                         if (!is_null($token)) {
                             if ($model->validate()) {
@@ -287,10 +292,10 @@ class SiteController extends Controller {
                                     $archivo->comentarios_aspirante = "No se puede cambiar.";
                                     $archivo->tipo_archivo_aspirante_id = 1;
                                     SeleccionHelper::creaArchivoAspirante(
-                                            $model->documentoidentificacion->tempName,
-                                            $aspirante->identificacion,
-                                            $aspirante->identificacion . '_' . Yii::$app->security->generateRandomString(),
-                                            $archivo);
+                                        $model->documentoidentificacion->tempName,
+                                        $aspirante->identificacion,
+                                        $aspirante->identificacion . '_' . Yii::$app->security->generateRandomString(),
+                                        $archivo);
                                     $this->foto($aspirante->urlfoto, $model->foto);
                                     //La imagen traerá al inicio data:image/png;base64, cosa que debemos remover
                                     $imagenCodificadaLimpia = str_replace("data:image/png;base64,", "", $model->foto);
@@ -301,16 +306,16 @@ class SiteController extends Controller {
                                     // DIRECTORY_SEPARATOR . "foto_" . uniqid() . ".png";
                                     //Escribir el archivo
                                     $fototemporal = Yii::$app->basePath .
-                                            DIRECTORY_SEPARATOR .
-                                            'web' . Yii::$app->params['rutaarchivosaspirantes'] .
-                                            DIRECTORY_SEPARATOR .
-                                            substr($aspirante->identificacion, 0, 3) .
-                                            DIRECTORY_SEPARATOR .
-                                            $aspirante->identificacion .
-                                            DIRECTORY_SEPARATOR . $aspirante->urlfoto . '.png';
+                                        DIRECTORY_SEPARATOR .
+                                        'web' . Yii::$app->params['rutaarchivosaspirantes'] .
+                                        DIRECTORY_SEPARATOR .
+                                        substr($aspirante->identificacion, 0, 3) .
+                                        DIRECTORY_SEPARATOR .
+                                        $aspirante->identificacion .
+                                        DIRECTORY_SEPARATOR . $aspirante->urlfoto . '.png';
                                     file_put_contents($fototemporal, $imagenDecodificada);
                                     SeleccionHelper::creaArchivoAspirante($fototemporal, $aspirante->identificacion, $aspirante->urlfoto,
-                                            null, '.png');
+                                        null, '.png');
                                     unlink($fototemporal);
                                     $token->ip_registro = Yii::$app->request->userIP;
                                     $token->validado = 1;
@@ -347,7 +352,7 @@ class SiteController extends Controller {
         $model->pdf_correcto = 0;
         $model->captcha = '';
         return $this->render('signup', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
@@ -398,7 +403,7 @@ class SiteController extends Controller {
         }
 
         return $this->render('requestPasswordResetToken', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
@@ -430,7 +435,7 @@ class SiteController extends Controller {
         }
 
         return $this->render('resetPassword', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
@@ -438,8 +443,8 @@ class SiteController extends Controller {
      * Verify email address
      *
      * @param string $token
-     * @throws BadRequestHttpException
      * @return yii\web\Response
+     * @throws BadRequestHttpException
      */
     public function actionVerifyEmail($token) { // OK
         if (!Yii::$app->user->isGuest) {
@@ -472,8 +477,8 @@ class SiteController extends Controller {
      * Delete email address
      *
      * @param string $token
-     * @throws BadRequestHttpException
      * @return yii\web\Response
+     * @throws BadRequestHttpException
      */
     public function actionDeleteEmail($token) { // OK
         if (!Yii::$app->user->isGuest) {
@@ -502,7 +507,7 @@ class SiteController extends Controller {
         Yii::$app->session->setFlash('error', 'Va a eliminar el registro de ' . $model->aspirante->correo_electronico . ', esta acción es irreversible.');
         $model->confirmacion = 0;
         return $this->render('deleteToken', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
@@ -551,12 +556,12 @@ class SiteController extends Controller {
             }
         }
         return $this->render('resendVerificationEmail', [
-                    'model' => $model
+            'model' => $model
         ]);
     }
 
     /**
-     * 
+     *
      * @return []
      */
     public function actionSms() {
@@ -567,10 +572,10 @@ class SiteController extends Controller {
         $date = new \DateTime();
         $date->modify('-30 minute');
         if (
-                !(Yii::$app->user->isGuest) ||
-                !($session->has('nuevoaspiranteuuid')) ||
-                !(Yii::$app->request->isAjax) ||
-                !(Yii::$app->request->isPost)
+            !(Yii::$app->user->isGuest) ||
+            !($session->has('nuevoaspiranteuuid')) ||
+            !(Yii::$app->request->isAjax) ||
+            !(Yii::$app->request->isPost)
         ) {
             return ['resultado' => false, 'message' => 'Ha intentado una acción no permitida. Su IP ' . \Yii::$app->request->userIP . ' ha sido registrada.'];
         }
@@ -583,10 +588,9 @@ class SiteController extends Controller {
             }
             /* Se buscan los tokens que se han registrado con la misma IP en la última media hora */
             $numerotokens = Token::find()
-                    ->where(['ip_creacion' => Yii::$app->request->userIP])
-                    ->andWhere(['>', 'created_at', $date->format('Y-m-d H:i:s')])
-                    ->count()
-            ;
+                ->where(['ip_creacion' => Yii::$app->request->userIP])
+                ->andWhere(['>', 'created_at', $date->format('Y-m-d H:i:s')])
+                ->count();
             if ($numerotokens >= 10) {
                 return ['resultado' => false, 'message' => 'Se han realizado demasiadas solicitudes de Token desde la IP ' . \Yii::$app->request->userIP . '. Debe esperar o intentar desde otra IP. La IP ha sido registrada y se revisarán las causas.'];
             }
@@ -633,10 +637,10 @@ class SiteController extends Controller {
             // Si hay menos de dos aspirantes registrados con el mismo celular se continua
             $sDestination = '57' . $tokenpost->celular;
             $token = Token::findOne([
-                        'celular' => $tokenpost->celular,
-                        'correo_electronico' => $tokenpost->correo_electronico,
-                        'identificacion' => $tokenpost->identificacion,
-                        'validado' => 0,
+                'celular' => $tokenpost->celular,
+                'correo_electronico' => $tokenpost->correo_electronico,
+                'identificacion' => $tokenpost->identificacion,
+                'validado' => 0,
             ]);
             if (is_null($token)) {
                 $token = new Token();
@@ -661,7 +665,7 @@ class SiteController extends Controller {
     }
 
     /**
-     * 
+     *
      * @param string $sDestination Celular de destino
      * @param string $message Mensaje a enviar
      * @return boolean
@@ -671,16 +675,11 @@ class SiteController extends Controller {
         $altiriaSMS->setUrl("http://www.altiria.net/api/http");
         $altiriaSMS->setDomainId('dirigiendoproyectos');
         $altiriaSMS->setLogin('jabernal@dirigiendoproyectos.com');
-        $altiriaSMS->setPassword('DP8bh4Mnx5s');
+        $altiriaSMS->setPassword('Na$$imT4leB');
         $altiriaSMS->setDebug(true);
         $response = $altiriaSMS->sendSMS($sDestination, $message);
-        $url = 'https://api.hablame.co/sms/envio/';
-        $data = ['cliente' => 10012428, 'api' => 'Be9zsvK0rHO46dOAsmTXoJjJXRIwNn', 'numero' => $sDestination, 'sms' => $message, 'fecha' => '', 'referencia' => 'Registro de aspirantes',];
 
-        $options = ['http' => ['header' => "Content-type: application/x-www-form-urlencoded\r\n", 'method' => 'POST', 'content' => http_build_query($data)]];
-        $context = stream_context_create($options);
-        $result = json_decode((file_get_contents($url, false, $context)), true);
-        if (!$response && $result["resultado"] != 0) {
+        if (!$response) {
             return false;
         } else {
             return true;

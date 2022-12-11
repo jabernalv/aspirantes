@@ -1,6 +1,6 @@
 <?php
 
-use yii\bootstrap4\Html;
+use yii\bootstrap5\Html;
 use kartik\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */

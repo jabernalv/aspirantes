@@ -660,15 +660,15 @@ ul.gj-list-md li.disabled>[data-role="wrapper"]>[data-role="display"] {
 }
 
 /** Bootstrap 4 **/
-.gj-dialog-bootstrap4 {
+.gj-dialog-bootstrap5 {
     overflow: hidden;
     z-index: 1202;
 }
 
-.gj-dialog-bootstrap4 [data-role="title"] {
+.gj-dialog-bootstrap5 [data-role="title"] {
     display: inline;
 }
-.gj-dialog-bootstrap4 [data-role="close"] {
+.gj-dialog-bootstrap5 [data-role="close"] {
     line-height: 1.5;
 }
 

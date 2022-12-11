@@ -1,7 +1,7 @@
 <?php
 
-use yii\bootstrap4\Html;
-use yii\bootstrap4\ActiveForm;
+use yii\bootstrap5\Html;
+use yii\bootstrap5\ActiveForm;
 use yii\helpers\Url;
 use kartik\grid\GridView;
 use kartik\grid\RadioColumn;
@@ -9,7 +9,7 @@ use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\AspiranteCargo */
-/* @var $form yii\bootstrap4\ActiveForm */
+/* @var $form yii\bootstrap5\ActiveForm */
 /* @var $proceso common\models\Proceso */
 /* @var $searchModelCargo common\models\search\CargoSearch */
 /* @var $dataProviderCargo yii\data\ActiveDataProvider */

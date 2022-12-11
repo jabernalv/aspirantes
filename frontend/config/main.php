@@ -21,7 +21,7 @@ return [
             'csrfParam' => '_csrf-aspirantes',
         ],
         'user' => [
-            'identityClass' => 'common\models\Aspirante',
+            'identityClass' => \common\models\Aspirante::class,
             'enableAutoLogin' => false,
             'identityCookie' => ['name' => '_identity-aspirantes', 'httpOnly' => true],
         ],
@@ -52,6 +52,7 @@ return [
             ],
         ],
         'assetManager' => [
+            'appendTimestamp' => true,
             'bundles' => [
                 'kartik\form\ActiveFormAsset' => [
                     'bsDependencyEnabled' => false // do not load bootstrap assets for a specific asset bundle
@@ -59,7 +60,7 @@ return [
             ],
         ],
         'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
+            'class' => \yii\swiftmailer\Mailer::class,
             'viewPath' => '@common/mail',
             'useFileTransport' => false,
             'transport' => [

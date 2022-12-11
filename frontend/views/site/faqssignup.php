@@ -1,9 +1,9 @@
 <?php
 /* @var $this yii\web\View */
-/* @var $form yii\bootstrap4\ActiveForm */
+/* @var $form yii\bootstrap5\ActiveForm */
 /* @var $model \frontend\models\ResetPasswordForm */
 
-use yii\bootstrap4\Html;
+use yii\bootstrap5\Html;
 use yii\helpers\Url;
 ?>
 <?php if (Yii::$app->user->isGuest) : ?>
@@ -60,11 +60,11 @@ use yii\helpers\Url;
         <div class="col">
             <h3>Ingrese el TOKEN</h3>
             <p>Cuando el sistema verifica que se introdujo un número de celular válido se activa el botón</p>
-            <button type="button" class="btn btn-primary"><svg class="svg-inline--fa fa-mobile-alt fa-w-10" aria-hidden="true" data-prefix="fa" data-icon="mobile-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M272 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h224c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM160 480c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm112-108c0 6.6-5.4 12-12 12H60c-6.6 0-12-5.4-12-12V60c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v312z"></path></svg><!-- <i class="fa fa-mobile-alt"></i> --> Token</button>
+            <button type="button" class="btn btn-primary"><i class="icon-mobile"></i> Token</button>
             <p>Al dar clic en el botón recibirá un mensaje de texto SMS en el celular que ingresó, es un número de seis cifras que debe ser ingresado en el campo.</p>
-            <div class="input-group"><div class="input-group-prepend"><span class="input-group-text"><svg class="svg-inline--fa fa-sticky-note fa-w-14" aria-hidden="true" data-prefix="fa" data-icon="sticky-note" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M312 320h136V56c0-13.3-10.7-24-24-24H24C10.7 32 0 42.7 0 56v400c0 13.3 10.7 24 24 24h264V344c0-13.2 10.8-24 24-24zm129 55l-98 98c-4.5 4.5-10.6 7-17 7h-6V352h128v6.1c0 6.3-2.5 12.4-7 16.9z"></path></svg><!-- <i class="fa fa-sticky-note"></i> --></span></div><input type="number" id="signupform-token" class="form-control nocopypaste is-valid" name="SignupForm[token]" maxlength="6" step="1" min="100000" max="999999" placeholder="Dé clic en el botón [TOKEN] para recibir el token en su celular." autocomplete="nope" data-message="Ingrese el token enviado a su celular." tabindex="-1" aria-required="true" data-cip-id="signupform-token" aria-invalid="false"></div>
+            <div class="input-group"><div class="input-group-prepend"><span class="input-group-text"><svg class="svg-inline--bi bi-sticky-fill fa-w-14" aria-hidden="true" data-prefix="fa" data-icon="sticky-note" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M312 320h136V56c0-13.3-10.7-24-24-24H24C10.7 32 0 42.7 0 56v400c0 13.3 10.7 24 24 24h264V344c0-13.2 10.8-24 24-24zm129 55l-98 98c-4.5 4.5-10.6 7-17 7h-6V352h128v6.1c0 6.3-2.5 12.4-7 16.9z"></path></svg><!-- <i class="bi bi-sticky-fill"></i> --></span></div><input type="number" id="signupform-token" class="form-control nocopypaste is-valid" name="SignupForm[token]" maxlength="6" step="1" min="100000" max="999999" placeholder="Dé clic en el botón [TOKEN] para recibir el token en su celular." autocomplete="nope" data-message="Ingrese el token enviado a su celular." tabindex="-1" aria-required="true" data-cip-id="signupform-token" aria-invalid="false"></div>
             <p>Ingrese el token que recibió en el celular y dé clic en el botón</p>
-            <button class="btn btn-light btn-block nextBtnFake float-right" type="button">Siguiente <svg class="svg-inline--fa fa-angle-double-right fa-w-14" aria-hidden="true" data-prefix="fa" data-icon="angle-double-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg><!-- <i class="fa fa-angle-double-right"></i> --></button>
+            <button class="btn btn-light btn-block nextBtnFake float-right" type="button">Siguiente <i class="bi bi-chevron-double-right"></i></button>
         </div>
     </div>
     <hr>
@@ -79,7 +79,7 @@ use yii\helpers\Url;
             <p>Ingrese nombres, apellidos y fecha de nacimiento. Tal y como aparecen el documento de identidad.</p>
             <p>Recuerde que se validarán estos datos contra el documento que cargue.</p>
             <p>Cuando termine dé clic en el botón</p>
-            <button class="btn btn-light btn-block nextBtnFake float-right" type="button">Siguiente <svg class="svg-inline--fa fa-angle-double-right fa-w-14" aria-hidden="true" data-prefix="fa" data-icon="angle-double-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg><!-- <i class="fa fa-angle-double-right"></i> --></button>
+            <button class="btn btn-light btn-block nextBtnFake float-right" type="button">Siguiente <i class="bi bi-chevron-double-right"></i></button>
         </div>
     </div>
     <hr>
@@ -97,7 +97,7 @@ use yii\helpers\Url;
             <p>Tenga en cuenta que esta fotografía será usada para validar que en efecto la persona que diligencia el formulario es la que aparece en el documento de identidad.</p>
             <p>Puede tomar varias veces la foto hasta que esté satisfecho con el resultado. Una vez que la fotografía sea enviada al servidor no se podrá cambiar.</p>
             <p>Cuando termine dé clic en el botón</p>
-            <button class="btn btn-light btn-block nextBtnFake float-right" type="button">Siguiente <svg class="svg-inline--fa fa-angle-double-right fa-w-14" aria-hidden="true" data-prefix="fa" data-icon="angle-double-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg><!-- <i class="fa fa-angle-double-right"></i> --></button>
+            <button class="btn btn-light btn-block nextBtnFake float-right" type="button">Siguiente <i class="bi bi-chevron-double-right"></i></button>
         </div>
     </div>
     <hr>
@@ -110,12 +110,12 @@ use yii\helpers\Url;
         <div class="col">
             <h3>Cargue el documento de identidad</h3>
             <p>Dé clic en el botón</p>
-            <button type="button" class="btn btn-primary"><svg class="svg-inline--fa fa-id-card fa-w-18" aria-hidden="true" data-prefix="fa" data-icon="id-card" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M528 32H48C21.5 32 0 53.5 0 80v16h576V80c0-26.5-21.5-48-48-48zM0 432c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V128H0v304zm352-232c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16zm0 64c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16zm0 64c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16zM176 192c35.3 0 64 28.7 64 64s-28.7 64-64 64-64-28.7-64-64 28.7-64 64-64zM67.1 396.2C75.5 370.5 99.6 352 128 352h8.2c12.3 5.1 25.7 8 39.8 8s27.6-2.9 39.8-8h8.2c28.4 0 52.5 18.5 60.9 44.2 3.2 9.9-5.2 19.8-15.6 19.8H82.7c-10.4 0-18.8-10-15.6-19.8z"></path></svg><!-- <i class="fa fa-id-card"></i> --> Documento ID</button>
+            <button type="button" class="btn btn-primary"><i class="icon-contact-businesscard"></i> Documento ID</button>
             <p>Tenga en cuenta que debe cargar un archivo en formato PDF, de máximo 1 MB de peso, que no tenga contraseña y que sea legible.</p>
             <p>Este archivo se usará para validar con la fotografía que se tomó en el paso anterior. Una vez que este archivo sea enviado al servidor no se podrá cambiar.</p>
             <p>Verifique que el documento sea visible y legible, si no lo puede ver bien no lo envíe. Consiga una copia de mejor resolución antes de enviar su solicitud de registro.</p>
             <p>Cuando termine dé clic en el botón</p>
-            <button class="btn btn-light btn-block nextBtnFake float-right" type="button">Siguiente <svg class="svg-inline--fa fa-angle-double-right fa-w-14" aria-hidden="true" data-prefix="fa" data-icon="angle-double-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg><!-- <i class="fa fa-angle-double-right"></i> --></button>
+            <button class="btn btn-light btn-block nextBtnFake float-right" type="button">Siguiente <i class="bi bi-chevron-double-right"></i></button>
         </div>
     </div>
     <hr>
@@ -130,7 +130,7 @@ use yii\helpers\Url;
             <p>Ingrese dos veces, en los campos que el formulario solicita, la contraseña que va a usar</p>
             <p>Por razones de seguridad debe tener por lo menos 8 caracteres de largo, por lo menos una letra mayúscula, por lo menos una letra minúscula, por lo menos un número y por lo menos un caracter especial como estos (*%$#).</p>
             <p>Cuando termine dé clic en el botón</p>
-            <button class="btn btn-light btn-block nextBtnFake float-right" type="button">Siguiente <svg class="svg-inline--fa fa-angle-double-right fa-w-14" aria-hidden="true" data-prefix="fa" data-icon="angle-double-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg><!-- <i class="fa fa-angle-double-right"></i> --></button>
+            <button class="btn btn-light btn-block nextBtnFake float-right" type="button">Siguiente <i class="bi bi-chevron-double-right"></i></button>
         </div>
     </div>
     <hr>

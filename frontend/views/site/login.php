@@ -1,9 +1,9 @@
 <?php
 /* @var $this yii\web\View */
-/* @var $form yii\bootstrap4\ActiveForm */
+/* @var $form yii\bootstrap5\ActiveForm */
 /* @var $model \frontend\models\LoginForm */
 
-use yii\bootstrap4\Html;
+use yii\bootstrap5\Html;
 use kartik\form\ActiveForm;
 use common\components\PasswordTextBox;
 
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-lg-6">
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
-            <?= $form->field($model, 'correo_electronico', ['addon' => ['prepend' => ['content' => '<i class="fa fa-envelope"></i>']]])->textInput(['autofocus' => true, 'placeholder' => 'Ingrese el correo electrónico registrado.']) ?>
+            <?= $form->field($model, 'correo_electronico', ['addon' => ['prepend' => ['content' => '<i class="bi bi-envelope-at"></i>']]])->textInput(['autofocus' => true, 'placeholder' => 'Ingrese el correo electrónico registrado.']) ?>
             <?=
             $form->field($model, 'password', ['addon' => ['prepend' => ['content' => '<i class="fa fa-key"></i>']]])->widget(PasswordTextBox::class, [
                 'options' => [

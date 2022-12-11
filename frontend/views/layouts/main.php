@@ -2,9 +2,9 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use yii\bootstrap4\Html;
-use yii\bootstrap4\Nav;
-use yii\bootstrap4\NavBar;
+use yii\bootstrap5\Html;
+use yii\bootstrap5\Nav;
+use yii\bootstrap5\NavBar;
 use yii\widgets\Breadcrumbs;
 use yii\helpers\Url;
 use common\widgets\Alert;
@@ -103,7 +103,7 @@ $asset = Yii::$app->params['tema']::register($this);
         ?>
         <?php
 //if (!(Yii::$app->user->isGuest)) :
-        yii\bootstrap4\Modal::begin([
+        yii\bootstrap5\Modal::begin([
             'headerOptions' => ['id' => 'modalHeader'],
             'id' => 'modaldialog',
             'size' => 'modal-xl',
@@ -118,7 +118,7 @@ $asset = Yii::$app->params['tema']::register($this);
             </div>
         </div>
         <?php
-        yii\bootstrap4\Modal::end();
+        yii\bootstrap5\Modal::end();
 //endif;
         $this->registerJsFile('/js/jstorage.js?', ['depends' => [yii\web\JqueryAsset::class]]);
         $this->registerJsFile('/js/jquery.jfontsize-2.0.js?', ['depends' => [yii\web\JqueryAsset::class]]);

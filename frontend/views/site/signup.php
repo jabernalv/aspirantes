@@ -1,32 +1,30 @@
 <?php
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap4\ActiveForm */
-/* @var $model \frontend\models\SignupForm */
 
 use kartik\form\ActiveForm;
 use yii\helpers\Url;
+use richardfan\widget\JSRegister;
+
+/* @var $this yii\web\View */
+/* @var $form yii\bootstrap5\ActiveForm */
+/* @var $model \frontend\models\SignupForm */
 
 $this->title = 'Registro';
 $this->params['breadcrumbs'][] = $this->title;
-$this->registerCssFile('/css/contact-form.css?' . time());
-$this->registerCssFile('/css/camara.css?' . time());
 ?>
-<nav>
-    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><i class="far fa-address-book" style="font-size: 24px;"></i>&nbsp;&nbsp;Datos</a>
-        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fas fa-info-circle" style="font-size: 24px;"></i>&nbsp;&nbsp;Ayuda</a>
-    </div>
-</nav>
-<div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-        <?php
-        $form = ActiveForm::begin([
-                    'id' => 'form-signup',
-                    'enableClientValidation' => true,
-                    'encodeErrorSummary' => false,
-                    'errorSummaryCssClass' => 'help-block',
-                    'options' => ['autocomplete' => 'off', 'class' => 'popup-form', 'enctype' => 'multipart/form-data', 'role' => 'form']]);
-        ?>
+<ul class="nav nav-tabs flex-column flex-sm-row nav-fill" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
+            <i class="far fa-address-book" style=" font-size: 24px;"></i>&nbsp;&nbsp;Datos
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
+            <i class="fas fa-info-circle" style="font-size: 24px;"></i>&nbsp;&nbsp;Ayuda
+        </button>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
         <div class="site-signup">
             <div class="row">
                 <div class="col" id="message-signup"></div>
@@ -34,29 +32,27 @@ $this->registerCssFile('/css/camara.css?' . time());
             <?=
             $this->render('_formsignup', [
                 'model' => $model,
-                'form' => $form,
             ])
             ?>
         </div>
-        <?php ActiveForm::end(); ?>
-        <div class="row"><div class="col">Por favor diligencie los campos para registrarse. Tenga presente que la dirección IP será guardada.</div></div>
+        <div class="row">
+            <div class="col">Por favor diligencie los campos para registrarse. Tenga presente que la dirección IP será
+                guardada.
+            </div>
+        </div>
     </div>
-    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-        <div id="ayudasignup"a
-        <?=
-        $this->render('faqssignup', [
-        ])
-        ?>></div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div id="ayudasignup">
+            <?=
+            $this->render('faqssignup', [
+            ])
+            ?>
+        </div>
     </div>
 </div>
 <canvas id="canvasfotoacargar" style="display: none;"></canvas>
-<?php
-$this->registerJsFile('/js/camara.js?' . time(), ['depends' => [yii\web\JqueryAsset::class]]);
-$this->registerJsFile('//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.3.200/pdf.min.js', ['depends' => [yii\web\JqueryAsset::class]]);
-$this->registerJsFile('/js/jsencrypt.min.js', ['depends' => [yii\web\JqueryAsset::class]]);
-// Ejemplos de pdf.js https://mozilla.github.io/pdf.js/examples/
-$js = <<< JS
-$("#faqslink").html("");
-console.log(navigator.sayswho);
-JS;
-$this->registerJs($js);
+<?php JSRegister::begin(); ?>
+<script>
+    $("#faqslink").html("");
+</script>
+<?php JSRegister::end(); ?>

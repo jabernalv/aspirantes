@@ -24,7 +24,7 @@ class SbcleanAsset extends AssetBundle {
         'js/clean-blog.min.js',
     ];
     public $depends = [
-        'frontend\assets\AppAsset',
+        \frontend\assets\AppAsset::class,
     ];
 
 }

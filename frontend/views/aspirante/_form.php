@@ -1,6 +1,6 @@
 <?php
 
-use yii\bootstrap4\Html;
+use yii\bootstrap5\Html;
 use yii\helpers\Url;
 use kartik\widgets\ActiveForm;
 use kartik\select2\Select2;
@@ -9,7 +9,7 @@ use common\components\PasswordTextBox;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Aspirante */
-/* @var $form yii\bootstrap4\ActiveForm */
+/* @var $form yii\bootstrap5\ActiveForm */
 ?>
 
 <div class="aspirante-form">
@@ -28,7 +28,7 @@ use common\components\PasswordTextBox;
             <?= $form->field($model, 'apellidos', ['addon' => ['prepend' => ['content' => '<i class="fa fa-user"></i>']]])->textInput(['maxlength' => true, 'disabled' => 'disabled', 'readonly' => 'readonly']) ?>
         </div>
         <div class="col-lg">
-            <?= $form->field($model, 'correo_electronico', ['addon' => ['prepend' => ['content' => '<i class="fa fa-envelope"></i>']]])->textInput(['maxlength' => true, 'disabled' => 'disabled', 'readonly' => 'readonly']) ?>
+            <?= $form->field($model, 'correo_electronico', ['addon' => ['prepend' => ['content' => '<i class="bi bi-envelope-at"></i>']]])->textInput(['maxlength' => true, 'disabled' => 'disabled', 'readonly' => 'readonly']) ?>
         </div>
     </div>
     <div class="form-row">
@@ -39,11 +39,11 @@ use common\components\PasswordTextBox;
         </div>
         <div class="col-lg">
             <?=
-            $form->field($model, 'tipo_identificacion_id', ['addon' => ['prepend' => ['content' => '<i class="fa fa-id-badge"></i>']]])->textInput(['disabled' => 'disabled', 'readonly' => 'readonly', 'value' => $model->tipoIdentificacion->nombre]);
+            $form->field($model, 'tipo_identificacion_id', ['addon' => ['prepend' => ['content' => '<i class="bi bi-person-badge-fill"></i>']]])->textInput(['disabled' => 'disabled', 'readonly' => 'readonly', 'value' => $model->tipoIdentificacion->nombre]);
             ?>
         </div>
         <div class="col-lg">
-            <?= $form->field($model, 'identificacion', ['addon' => ['prepend' => ['content' => '<i class="fa fa-id-card"></i>']]])->textInput(['disabled' => 'disabled', 'readonly' => 'readonly']) ?>
+            <?= $form->field($model, 'identificacion', ['addon' => ['prepend' => ['content' => '<i class="icon-contact-businesscard"></i>']]])->textInput(['disabled' => 'disabled', 'readonly' => 'readonly']) ?>
         </div>
     </div>
     <div class="form-row">
